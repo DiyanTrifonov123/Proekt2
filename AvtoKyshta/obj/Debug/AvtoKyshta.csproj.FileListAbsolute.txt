@@ -1,0 +1,8 @@
+E:\Programming\Proekt2\AvtoKyshta\bin\Debug\AvtoKyshta.exe.config
+E:\Programming\Proekt2\AvtoKyshta\bin\Debug\AvtoKyshta.exe
+E:\Programming\Proekt2\AvtoKyshta\bin\Debug\AvtoKyshta.pdb
+E:\Programming\Proekt2\AvtoKyshta\obj\Debug\AvtoKyshta.csproj.AssemblyReference.cache
+E:\Programming\Proekt2\AvtoKyshta\obj\Debug\AvtoKyshta.csproj.SuggestedBindingRedirects.cache
+E:\Programming\Proekt2\AvtoKyshta\obj\Debug\AvtoKyshta.csproj.CoreCompileInputs.cache
+E:\Programming\Proekt2\AvtoKyshta\obj\Debug\AvtoKyshta.exe
+E:\Programming\Proekt2\AvtoKyshta\obj\Debug\AvtoKyshta.pdb
