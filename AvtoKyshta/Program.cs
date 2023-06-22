@@ -12,43 +12,48 @@ namespace AvtoKyshta
         static void Main(string[] args)
         {
             List<CarDealerShip> list = new List<CarDealerShip>();
-            Console.Write($"Въведи брой: ");
-            int n = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < n; i++)
-            {
-                CarDealerShip car = new CarDealerShip();
-                car.Input();
-                list.Add(car);
-            }
-
-            Console.WriteLine($"1. Принтирай всички коли");
-            Console.WriteLine($"2. Принтирай всички коли по зададена марка");
-            Console.WriteLine($"3. Принтирай всички коли по зададен ценови диапазон");
-            Console.WriteLine($"4. Актуализирай или изтрий информация за автомобил по дадена марка");
-            Console.WriteLine($"5. Изтрий кола по зададена марка");
-            Console.WriteLine($"6. Принтирай средната възраст на колите");
-            Console.WriteLine($"7. Принтирай информация за най-старата кола");
-            Console.WriteLine($"8. Принтирай информация за най-новата кола по зададена марка");
-            Console.WriteLine($"9. Принтирай всички коли сортирани по цените им");
-            Console.WriteLine($"10. Изход");
+            Console.WriteLine($"Меню:");
+            Console.WriteLine($"1. Добави кола/и");
+            Console.WriteLine($"2. Принтирай всички коли");
+            Console.WriteLine($"3. Принтирай всички коли по зададена марка");
+            Console.WriteLine($"4. Принтирай всички коли по зададен ценови диапазон");
+            Console.WriteLine($"5. Актуализирай или изтрий информация за автомобил по дадена марка");
+            Console.WriteLine($"6. Изтрий кола по зададена марка");
+            Console.WriteLine($"7. Принтирай средната възраст на колите");
+            Console.WriteLine($"8. Принтирай информация за най-старата кола");
+            Console.WriteLine($"9. Принтирай информация за най-новата кола по зададена марка");
+            Console.WriteLine($"10. Принтирай всички коли сортирани по цените им");
+            Console.WriteLine($"11. Изход");
             Console.WriteLine();
 
             Console.Write($"Въведи номер на команда: ");
             int command = int.Parse(Console.ReadLine());
 
-            while (command < 10)
+            while (command != 11)
             {
                 switch (command)
                 {
                     case 1:
-                        foreach (var item in list)
+                        Console.Write($"Въведи брой: ");
+                        int n = int.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < n; i++)
                         {
-                            item.Print();
+                            CarDealerShip car = new CarDealerShip();
+                            car.Input();
+                            list.Add(car);
                         }
                         break;
 
                     case 2:
+                        foreach (var item in list)
+                        {
+                            item.Print();
+                        }
+                        Console.WriteLine();
+                        break;
+
+                    case 3:
                         Console.Write($"Марка за търсене: ");
                         string brandSearch = Console.ReadLine().ToLower();
                         foreach (var item in list)
@@ -58,9 +63,10 @@ namespace AvtoKyshta
                                 item.Print();
                             }
                         }
+                        Console.WriteLine();
                         break;
 
-                    case 3:
+                    case 4:
                         Console.Write($"Минимална цена: ");
                         int down = int.Parse(Console.ReadLine());
                         Console.Write($"Максимална цена: ");
@@ -72,9 +78,10 @@ namespace AvtoKyshta
                                 item.Print();
                             }
                         }
+                        Console.WriteLine();
                         break;
 
-                    case 4:
+                    case 5:
                         Console.Write($"Актуализация или изтриване: ");
                         string cmd = Console.ReadLine().ToLower();
                         if (cmd == "актуализация")
@@ -95,15 +102,17 @@ namespace AvtoKyshta
                             string brandDel = Console.ReadLine().ToLower();
                             list.RemoveAll(item => item.Brand.ToLower() == brandDel);
                         }
-                        break;
-
-                    case 5:
-                        Console.Write($"Марка за изтриване: ");
-                        string brandDelete = Console.ReadLine().ToLower();
-                        list.RemoveAll(item => item.Brand.ToLower() == brandDelete);
+                        Console.WriteLine();
                         break;
 
                     case 6:
+                        Console.Write($"Марка за изтриване: ");
+                        string brandDelete = Console.ReadLine().ToLower();
+                        list.RemoveAll(item => item.Brand.ToLower() == brandDelete);
+                        Console.WriteLine();
+                        break;
+
+                    case 7:
                         var avg = 0.0;
                         foreach (var item in list)
                         {
@@ -111,9 +120,10 @@ namespace AvtoKyshta
                         }
                         avg = avg / list.Count;
                         Console.WriteLine($"Средна възраст на колите: {avg:f2} година.");
+                        Console.WriteLine();
                         break;
 
-                    case 7:
+                    case 8:
                         var oldest = 99999999;
                         foreach (var item in list)
                         {
@@ -130,9 +140,10 @@ namespace AvtoKyshta
                                 item.Print();
                             }
                         }
+                        Console.WriteLine();
                         break;
 
-                    case 8:
+                    case 9:
                         var newest = -99999999;
                         Console.Write($"Марка: ");
                         string brandSearch2 = Console.ReadLine().ToLower();
@@ -154,33 +165,38 @@ namespace AvtoKyshta
                                 item.Print();
                             }
                         }
+                        Console.WriteLine();
                         break;
 
-                    case 9:
+                    case 10:
                         list.Sort((x, y) => x.Price.CompareTo(y.Price));
                         foreach (var item in list)
                         {
                             item.Print();
                         }
+                        Console.WriteLine();
                         break;
 
                     default:
-                        break;
+                        return;
                 }
+
                 Console.Write($"Натисни копче за да продължиш!");
                 Console.ReadKey();
                 Console.Clear();
 
-                Console.WriteLine($"1. Принтирай всички коли");
-                Console.WriteLine($"2. Принтирай всички коли по зададена марка");
-                Console.WriteLine($"3. Принтирай всички коли по зададен ценови диапазон");
-                Console.WriteLine($"4. Актуализирай или изтрий информация за автомобили");
-                Console.WriteLine($"5. Изтрий кола по зададена марка");
-                Console.WriteLine($"6. Принтирай средната възраст на колите");
-                Console.WriteLine($"7. Принтирай информация за най-старата кола");
-                Console.WriteLine($"8. Принтирай информация за най-новата кола по зададена марка");
-                Console.WriteLine($"9. Принтирай всички коли сортирани по цените им");
-                Console.WriteLine($"10. Изход");
+                Console.WriteLine($"Меню:");
+                Console.WriteLine($"1. Добави кола/и");
+                Console.WriteLine($"2. Принтирай всички коли");
+                Console.WriteLine($"3. Принтирай всички коли по зададена марка");
+                Console.WriteLine($"4. Принтирай всички коли по зададен ценови диапазон");
+                Console.WriteLine($"5. Актуализирай или изтрий информация за автомобил по дадена марка");
+                Console.WriteLine($"6. Изтрий кола по зададена марка");
+                Console.WriteLine($"7. Принтирай средната възраст на колите");
+                Console.WriteLine($"8. Принтирай информация за най-старата кола");
+                Console.WriteLine($"9. Принтирай информация за най-новата кола по зададена марка");
+                Console.WriteLine($"10. Принтирай всички коли сортирани по цените им");
+                Console.WriteLine($"11. Изход");
                 Console.WriteLine();
 
                 Console.Write($"Въведи номер на команда: ");
