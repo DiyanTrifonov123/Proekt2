@@ -82,9 +82,9 @@ namespace AvtoKyshta
                         break;
 
                     case 5:
-                        Console.Write($"Актуализация или изтриване: ");
+                        Console.Write($"Актуализация(a/а) или изтриване(d/и): ");
                         string cmd = Console.ReadLine().ToLower();
-                        if (cmd == "актуализация")
+                        if (cmd == "a" || cmd == "а")
                         {
                             Console.Write("Марка за актуализация: ");
                             string brandAct = Console.ReadLine().ToLower();
@@ -96,13 +96,13 @@ namespace AvtoKyshta
                                 }
                             }
                         }
-                        else
+                        else if (cmd == "i" || cmd == "и")
                         {
                             Console.Write("Марка за изтриване: ");
                             string brandDel = Console.ReadLine().ToLower();
                             list.RemoveAll(item => item.Brand.ToLower() == brandDel);
+                            Console.WriteLine();
                         }
-                        Console.WriteLine();
                         break;
 
                     case 6:
